@@ -43,6 +43,7 @@ APP_SUBGHZ	= 1
 APP_ABOUT	= 1
 APP_PASSPORT = 1
 APP_UPDATER = 1
+APP_HID_ANALYZER = 1
 
 # Plugins
 APP_MUSIC_PLAYER = 1
@@ -122,6 +123,12 @@ endif
 APP_LF_RFID ?= 0
 ifeq ($(APP_LF_RFID), 1)
 CFLAGS		+= -DAPP_LF_RFID
+SRV_GUI		= 1
+endif
+
+APP_HID_ANALYZER ?= 0
+ifeq ($(APP_HID_ANALYZER), 1)
+CFLAGS		+= -DAPP_HID_ANALYZER
 SRV_GUI		= 1
 endif
 
@@ -220,7 +227,6 @@ ifeq ($(APP_GPIO), 1)
 CFLAGS		+= -DAPP_GPIO
 SRV_GUI		= 1
 endif
-
 
 APP_MUSIC_PLAYER ?= 0
 ifeq ($(APP_MUSIC_PLAYER), 1)
