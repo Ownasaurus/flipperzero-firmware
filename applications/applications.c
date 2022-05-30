@@ -44,7 +44,6 @@ extern int32_t vibro_test_app(void* p);
 extern int32_t bt_hid_app(void* p);
 extern int32_t battery_test_app(void* p);
 extern int32_t text_box_test_app(void* p);
-
 extern int32_t hid_analyzer_app(void* p);
 
 // Plugins
@@ -218,6 +217,14 @@ const FlipperApplication FLIPPER_APPS[] = {
 #ifdef APP_LF_RFID
     {.app = lfrfid_app,
      .name = "125 kHz RFID",
+     .stack_size = 2048,
+     .icon = &A_125khz_14,
+     .flags = FlipperApplicationFlagDefault},
+#endif
+
+#ifdef APP_HID_ANALYZER
+    {.app = hid_analyzer_app,
+     .name = "HID Analyzer",
      .stack_size = 2048,
      .icon = &A_125khz_14,
      .flags = FlipperApplicationFlagDefault},

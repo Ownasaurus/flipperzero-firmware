@@ -9,7 +9,6 @@ public:
 
 private:
     static void back_callback(void* context);
-    static void more_callback(void* context);
 
     string_t string[3];
 };

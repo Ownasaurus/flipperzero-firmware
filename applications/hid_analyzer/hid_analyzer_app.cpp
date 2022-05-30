@@ -16,7 +16,7 @@ HIDApp::~HIDApp() {
 void HIDApp::run(void* _args) {
     UNUSED(_args);
 
-    scene_controller.add_scene(SceneType::Read, new LfRfidAppSceneRead());
-    scene_controller.add_scene(SceneType::ReadSuccess, new LfRfidAppSceneReadSuccess());
-    scene_controller.process(100);
+    scene_controller.add_scene(SceneType::Read, new HIDAppSceneRead());
+    scene_controller.add_scene(SceneType::ReadSuccess, new HIDAppSceneReadSuccess());
+    scene_controller.process(100, SceneType::Read);
 }

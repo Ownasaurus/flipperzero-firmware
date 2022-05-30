@@ -14,11 +14,13 @@
 #include <view_modules/dialog_ex_vm.h>
 #include <view_modules/text_input_vm.h>
 #include <view_modules/byte_input_vm.h>
-#include "../lfrfid/view/container_vm.h"
+#include "view/container_vm.h"
 
 #include <notification/notification_messages.h>
 #include <storage/storage.h>
 #include <dialogs/dialogs.h>
+
+#include "helpers/hid_worker.h"
 
 class HIDApp {
 public:
@@ -34,21 +36,6 @@ public:
         GENERIC_SCENE_ENUM_VALUES,
         Read,
         ReadSuccess,
-        RetryConfirm,
-        ExitConfirm,
-        ReadKeyMenu,
-        Write,
-        WriteSuccess,
-        Emulate,
-        SaveName,
-        SaveSuccess,
-        SelectKey,
-        SavedKeyMenu,
-        SaveData,
-        SaveType,
-        SavedInfo,
-        DeleteConfirm,
-        DeleteSuccess,
     };
 
     class Event {
@@ -65,13 +52,14 @@ public:
 
     void run(void* args);
 
-private:
+// private:
     SceneController<GenericScene<HIDApp>, HIDApp> scene_controller;
     ViewController<HIDApp, SubmenuVM, PopupVM, DialogExVM, TextInputVM, ByteInputVM, ContainerVM>
         view_controller;
     RecordController<NotificationApp> notification;
     RecordController<Storage> storage;
     RecordController<DialogsApp> dialogs;
-
     TextStore text_store;
+
+    HIDWorker worker;
 };
